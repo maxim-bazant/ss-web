@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Inventory</title>
+{% endblock %}
+
+{% block navbutton %}
+    <div class="navbar-right">
+        <a href="/logout">Logout</a>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="inventory-container">
+            
+            <div class="add-card">
+                <div class="card-content"> 
+                    <a href="/inventory/add">
+                        <div class="circle"></div>
+                        <div class="plus">
+                            <p>&plus;</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            {% for material in materials %}
+                <div class="card">
+                    <button class="close-button"><a href="/inventory/delete/{{ material.code }}">&times</a></button>
+                    <div class="card-content">
+                        <div class="card-row">
+                            <h2>Material #{{ material.code }}</h2>
+                        </div>
+                        <div class="card-row">
+                            <span class="card-label">Content:</span>
+                            <span class="card-value">{{ material.content }}</span>
+                        </div>
+                        <div class="card-row">
+                            <span class="card-label">Fragile:</span>
+                            <span class="card-value">{{ material.fragile }}</span>
+                        </div>
+                        <div class="card-row">
+                            <span class="card-label">Placement:</span>
+                            <span class="card-value">{{ material.placement }}</span>
+                        </div>
+                        <div class="card-row">
+                            <span class="card-label">Instruction:</span>
+                            <span class="card-value">{{ material.instruction }}</span>
+                        </div>
+                        <div class="card-row">
+                            <span class="card-label">Units available:</span>
+                            <span class="card-value">{{ material.units_available }} {{ material.unit }}</span>
+                        </div>
+
+                        <div class="card-row">
+                            <button class="button center-button edit-button show-overlay" data-material-code="{{ material.code }}">Edit units</button>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="overlay">
+        <div class="overlay-content">
+            <form class="standout-form" action="/inventory/edit" method="post">
+                <input type="hidden" id="material-code" name="material_code" value="">
+                
+                <input name="units_edit" type="number" placeholder="Type in the quanitity." required>
+                <input type="submit" id="minus-button" name="action" value="Change">
+            </form>
+        </div>
+    </div>
+{% endblock %}

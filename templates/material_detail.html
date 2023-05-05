@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <title>Material Detail</title>
+{% endblock %}
+
+{% block body %}
+    <div id="form-container">
+        <h2 class="form-title">Material #{{ material.code }}</h2>
+        <form class="standout-form">
+            <div class="form-row">
+                <label>Material content:</label>
+                <div class="form-value">{{ material.content }}</div>
+            </div>
+            <div class="form-row">
+                <label>Fragile:</label>
+                <div class="form-value">{{ material.fragile }}</div>
+            </div>
+            <div class="form-row">
+                <label>Placement:</label>
+                <div class="form-value">{{ material.placement }}</div>
+            </div>
+            <div class="form-row">
+                <label>Instruction:</label>
+                <div class="form-value">{{ material.instruction }}</div>
+            </div>
+        </form>
+        <a href="{{ url_for('index') }}" class="button go-back-button">Go back</a>
+    </div>
+{% endblock %}

@@ -11,6 +11,7 @@ def user_logged_in():
         return False
 
 
+
 # ---------- AUTH0 ROUTES ----------
 
 @app.route("/login")

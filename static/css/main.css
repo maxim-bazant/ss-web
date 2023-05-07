@@ -178,7 +178,7 @@ input[type="submit"]:hover {
 }
 /* Different colors for flash messages */
 .green {
-    background-color: rgb(0, 219, 0);
+    background-color: rgb(0, 180, 0);
 }
 .red {
     background-color: red;

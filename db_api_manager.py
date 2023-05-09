@@ -14,7 +14,7 @@ def get_material(input):
     packages = materials_db.find()
 
     for package in packages:
-        if str(package["code"]) == input or package["content"] == input:
+        if str(package["code"]) == input or package["content"].lower() == input.lower():
             return package
     
     return False

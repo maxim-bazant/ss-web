@@ -469,3 +469,10 @@ a:hover .circle {
     margin-left: 50%;
     translate: -50%;
 }
+
+.top-left-button {
+    position: fixed;
+    top: 10vh;
+    margin-top: 20px;
+    margin-left: 20px;
+}

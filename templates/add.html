@@ -10,7 +10,9 @@
     </div>
 {% endblock %}
 
-{% block body %}
+{% block body %}\
+    <a href="{{ url_for('inventory') }}" class="button top-left-button">Go back to inventory</a>
+
     <div id="form-container">
         <h2 class="form-title">Add Material</h2>
         <form class="standout-form" action="/inventory/add" method="post">

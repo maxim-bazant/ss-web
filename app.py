@@ -48,19 +48,19 @@ def logout():
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        code = request.form["code"]
-        return redirect(url_for("material", code=code))
+        input = request.form["input"]
+        return redirect(url_for("material", input=input))
     else:
         return render_template("index.html")
 
 
-@app.route("/material/<code>")
-def material(code):
-    material = get_material(int(code))
+@app.route("/material/<input>")
+def material(input):
+    material = get_material(input)
     if material:
         return render_template("material_detail.html", material=material)
     else:
-        flash(f"Material \"{code}\" is not in the database! \n Please contact the manager.", "red")
+        flash(f"Material \"{input}\" is not in the database! \n Please contact the manager.", "red")
         return redirect(url_for("index"))
     
 

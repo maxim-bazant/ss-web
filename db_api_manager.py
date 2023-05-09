@@ -10,10 +10,11 @@ materials_db = inventory_db["Materials"]
 
 
 # functions
-def get_material(code:int):
+def get_material(input):
     packages = materials_db.find()
+
     for package in packages:
-        if package["code"] == code:
+        if str(package["code"]) == input or package["content"] == input:
             return package
     
     return False

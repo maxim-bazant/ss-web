@@ -375,6 +375,7 @@ label {
 .add-card {
     position: relative;
     width: 300px;
+    min-height: 450px;
     font-size: 14px;
     margin-bottom: 40px;
     border-radius: 10px;

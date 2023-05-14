@@ -10,18 +10,26 @@ materials_db = inventory_db["Materials"]
 
 
 # functions
-def get_material(input):
-    packages = materials_db.find()
+def get_material_detail(input):
+    materials = materials_db.find()
 
-    for package in packages:
-        if str(package["code"]) == input or package["content"].lower() == input.lower():
-            return package
+    for material in materials:
+        if str(material["code"]) == input or material["content"].lower() == input.lower():
+            return material
     
     return False
 
-def get_all_materials():
-    materials = materials_db.find()
-    return materials
+def get_materials(value=None):
+    all_materials = materials_db.find()
+    return_materials = []
+    if value:
+        for material in all_materials:
+            if str(material["code"]) == value or material["content"].lower() == value.lower():
+                return_materials.append(material)
+    else:
+        return_materials = all_materials
+    
+    return return_materials
 
 def delete_material(code:int):
     materials_db.delete_one({"code": code})

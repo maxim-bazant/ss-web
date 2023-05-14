@@ -56,7 +56,7 @@ def index():
 
 @app.route("/material/<input>")
 def material(input):
-    material = get_material(input)
+    material = get_material_detail(input)
     if material:
         return render_template("material_detail.html", material=material)
     else:
@@ -67,8 +67,16 @@ def material(input):
 @app.route("/inventory")
 def inventory():
     if user_logged_in():
-        materials = get_all_materials()
-        return render_template("inventory.html", materials=materials)
+        search_value = request.args.get('search')
+
+        materials = get_materials(value=search_value)
+
+        if materials != []:
+            print(materials)
+            return render_template("inventory.html", materials=materials)
+        else:
+            flash(f"There is no \"{search_value}\" in the materials database", "red")
+            return render_template("inventory.html", materials=get_materials())
     else:
         flash(f"You can not edit inventory!", "red")
         return redirect(url_for("index"))

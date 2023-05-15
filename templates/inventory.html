@@ -12,6 +12,14 @@
 
 {% block body %}
     <div class="container">
+
+        {% if search %}
+            <div class="result-text">
+                <a href="/inventory" class="button">Go Back</a>
+                <h1>Results for "{{ search }}"</h1>
+            </div>
+        {% endif %}
+
         <div class="search-container">
             <div class="form-container">
                 <form action="/inventory?search=">
@@ -23,16 +31,18 @@
 
         <div class="inventory-container">
             
-            <div class="add-card">
-                <div class="card-content"> 
-                    <a href="/inventory/add">
-                        <div class="circle"></div>
-                        <div class="plus">
-                            <p>&plus;</p>
-                        </div>
-                    </a>
+            {% if not search %}
+                <div class="add-card">
+                    <div class="card-content"> 
+                        <a href="/inventory/add">
+                            <div class="circle"></div>
+                            <div class="plus">
+                                <p>&plus;</p>
+                            </div>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
             
             {% for material in materials %}
                 <div class="card">

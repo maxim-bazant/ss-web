@@ -224,6 +224,7 @@ input[type="submit"]:hover {
 
 .hide-alert {
     animation: slideout 0.5s forwards;
+    z-index: -1;
 }
 
 
@@ -434,6 +435,15 @@ a:hover .circle {
     justify-content: flex-end;
     margin-right: 50px;
     margin-bottom: 20px;
+}
+
+.result-text {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-left: 50px;
 }
 
 /* OVERLAY */

@@ -68,12 +68,10 @@ def material(input):
 def inventory():
     if user_logged_in():
         search_value = request.args.get('search')
-
         materials = get_materials(value=search_value)
 
-        if materials != []:
-            print(materials)
-            return render_template("inventory.html", materials=materials)
+        if materials:
+            return render_template("inventory.html", materials=materials, search=search_value)
         else:
             flash(f"There is no \"{search_value}\" in the materials database", "red")
             return render_template("inventory.html", materials=get_materials())

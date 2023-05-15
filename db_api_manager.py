@@ -22,9 +22,9 @@ def get_material_detail(input):
 def get_materials(value=None):
     all_materials = materials_db.find()
     return_materials = []
-    if value:
+    if value: # user is searching a specific material
         for material in all_materials:
-            if str(material["code"]) == value or material["content"].lower() == value.lower():
+            if str(material["placement"]).lower() == value.lower():
                 return_materials.append(material)
     else:
         return_materials = all_materials

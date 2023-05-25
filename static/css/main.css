@@ -119,7 +119,8 @@ button {
 }
 
 /* Style the input box */
-input[type="number"], input[type="text"] {
+input[type="number"], input[type="text"], select {
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -494,4 +495,8 @@ a:hover .circle {
     top: 10vh;
     margin-top: 20px;
     margin-left: 20px;
+}
+
+select.add-input {
+    width: 320px;
 }

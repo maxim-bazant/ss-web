@@ -7,6 +7,7 @@ uri = "mongodb+srv://maximbazant:storagepassword@storagecluster.gq3ddlp.mongodb.
 client = MongoClient(uri, server_api=ServerApi('1'))
 inventory_db = client["MaterialInventory"]
 materials_db = inventory_db["Materials"]
+placements_db = inventory_db["Placement"]
 
 
 # functions

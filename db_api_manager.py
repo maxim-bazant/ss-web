@@ -43,7 +43,10 @@ def delete_material(code:int):
 
 def add_new_material(content, fragile, placement, instruction, units_available:int, unit):
     result = materials_db.find().sort('code', -1).limit(1)
-    largest_code = result[0]['code'] + 1
+    try:
+        largest_code = result[0]['code'] + 1
+    except Exception:
+        largest_code = 1
 
     material = {
         "code": largest_code,

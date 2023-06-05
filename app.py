@@ -106,7 +106,9 @@ def add():
             flash("Material added", "green")
             return redirect(url_for("inventory"))
         else:
-            return render_template("add.html")
+            placements = get_placements()
+            available_places = [fruit for fruit in placements["all_places"] if fruit not in placements["taken_places"]]
+            return render_template("add.html", placements=get_placements(), available_places=available_places)
     else:
         flash(f"You can not edit inventory!", "red")
         return redirect(url_for("index"))

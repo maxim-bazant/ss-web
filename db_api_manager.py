@@ -33,6 +33,12 @@ def get_materials(value=None):
     return return_materials
 
 def delete_material(code:int):
+
+    result = materials_db.find_one({"code": code})
+    print(result)
+    placement = result["placement"]
+    placements_db.update_one({}, {"$pull": {"taken_places": placement}})
+
     materials_db.delete_one({"code": code})
 
 def add_new_material(content, fragile, placement, instruction, units_available:int, unit):
@@ -50,6 +56,7 @@ def add_new_material(content, fragile, placement, instruction, units_available:i
     }
 
     materials_db.insert_one(material)
+    placements_db.update_one({}, {"$push": {"taken_places": placement}})
 
 def edit_units_available(code:int, quantity:int):
     item = materials_db.find_one({"code": code})
@@ -62,3 +69,5 @@ def edit_units_available(code:int, quantity:int):
     else:
         return False
     
+def get_placements():
+    return placements_db.find()[0]

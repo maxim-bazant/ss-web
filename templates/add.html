@@ -27,10 +27,9 @@
             <div class="form-add-row">
                 <label>Placement:</label>
                 <select name="placement" class="add-input" required>
-                    <option value="A">Option A</option>
-                    <option value="B">Option B</option>
-                    <option value="C">Option C</option>
-                    <option value="D">Option D</option>
+                    {% for placement in available_places %}
+                        <option value="{{ placement }}">{{ placement }}</option>
+                    {% endfor %}
                 </select>
             </div>
             <div class="form-add-row">
